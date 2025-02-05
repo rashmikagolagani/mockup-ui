@@ -5,3 +5,16 @@ export default function ProductCategoryRow({ category }) {
     </tr>
   );
 }
+function ProductRow({ product }) {
+  const name = ProductCategoryRow.stocked ? (
+    ProductCategoryRow.name
+  ) : (
+    <span style={{ color: "red" }}>{ProductCategoryRow.name}</span>
+  );
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{Product.price}</td>
+    </tr>
+  );
+}
