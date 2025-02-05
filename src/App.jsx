@@ -1,4 +1,4 @@
-export default function ProductCategoryRow({ category }) {
+function ProductCategoryRow({ category }) {
   return (
     <tr>
       <th colSpan="2">{category}</th>
@@ -14,11 +14,11 @@ function ProductRow({ product }) {
   return (
     <tr>
       <td>{name}</td>
-      <td>{Product.price}</td>
+      <td>{product.price}</td>
     </tr>
   );
 }
-function ProductTable({ products }) {
+export default function ProductTable({ products }) {
   const rows = [];
   let lastCategory = null;
   products.forEach((product) => {
@@ -50,8 +50,18 @@ function SearchBar() {
     <form>
       <input type="text" placeholder="Search..." />
       <label>
-        <input type="checkbox" /> Only show products in stock
+        <input type="checkbox" />
+        {""}
+        Only show products in stock
       </label>
     </form>
+  );
+}
+function FilterableProductTable({ products }) {
+  return (
+    <div>
+      <SearchBar />
+      <ProductTable products={products} />
+    </div>
   );
 }
